@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Support Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div id="toast" class="hidden fixed top-10 left-1/2 transform -translate-x-1/2 max-w-lg bg-green-400 text-white px-6 py-3 rounded-lg shadow-lg transition-opacity opacity-0">
+        <p id="toast-message">This is a success message!</p>
+    </div>
+
+    <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl p-8">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-gray-900">App Support Request</h2>
+            <p class="mt-2 text-sm text-gray-600">Please provide the details of your app-related issue</p>
+        </div>
+
+        <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D8c000008511Q" method="POST" class="space-y-6">
+            <input type="hidden" name="orgid" value="00D8c000008511Q">
+            <input type="hidden" name="retURL" id="retURL" value="">
+
+            <div class="space-y-4">
+                <!-- Contact Information Section -->
+                <div class="bg-gray-50 p-4 rounded-lg space-y-4">
+                    <h3 class="text-lg font-medium text-gray-900">Contact Information</h3>
+                    
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                        <input id="name" name="name" type="text" maxlength="80" required 
+                               class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input id="email" name="email" type="email" maxlength="80" required 
+                               class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                    </div>
+
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
+                        <input id="phone" name="phone" type="tel" maxlength="40" 
+                               class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                    </div>
+                </div>
+
+                <!-- Issue Details Section -->
+                <div class="bg-gray-50 p-4 rounded-lg space-y-4">
+                    <h3 class="text-lg font-medium text-gray-900">Issue Details</h3>
+
+                    <div>
+                        <label for="type" class="block text-sm font-medium text-gray-700">Type</label>
+                        <select id="type" name="type" required class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                            <option value="">--None--</option>
+                            <option value="Problem">Problem</option>
+                            <option value="Feature Request">Feature Request</option>
+                            <option value="Question">Question</option>
+                            <option value="Apex Exception">Apex Exception</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="subject" class="block text-sm font-medium text-gray-700">Subject</label>
+                        <input id="subject" name="subject" type="text" maxlength="80" required 
+                               class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                    </div>
+
+                    <div>
+                        <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                        <textarea id="description" name="description" rows="4" required
+                                  class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"></textarea>
+                    </div>
+                </div>
+
+                <!-- App Details Section -->
+                <div class="bg-gray-50 p-4 rounded-lg space-y-4">
+                    <h3 class="text-lg font-medium text-gray-900">App Details</h3>
+
+                    <div>
+                        <label for="00NQm000001TsMD" class="block text-sm font-medium text-gray-700">App</label>
+                        <select id="00NQm000001TsMD" name="00NQm000001TsMD" required class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">                        
+                            <option value="AOB Payments">AOB Payments</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="00NQm000001TsNp" class="block text-sm font-medium text-gray-700">Version Number</label>
+                        <input id="00NQm000001TsNp" name="00NQm000001TsNp" type="text" maxlength="255"
+                               class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                    </div>
+
+                    <div>
+                        <label for="00NQm000001TsIz" class="block text-sm font-medium text-gray-700">Organization Id</label>
+                        <input id="00NQm000001TsIz" name="00NQm000001TsIz" type="text" maxlength="255"
+                               class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                    </div>
+
+                    <div>
+                        <p class="text-sm text-gray-700">
+                            If you have a question or an issue that would require us to log into your instance, waiting time will be reduced if you <a href="https://addonblue.com/docs/addonblue-support/grant-addonblue-access-to-your-org/" class="font-medium text-blue-600 dark:text-blue-500 hover:no-underline">grant login access</a> for the Support team
+                        </p>
+                    </div>
+
+                    <div>
+                        <label for="00NQm000001TsKb" class="block text-sm text-gray-700">
+                            Have you granted Addonblue Support access to your environment for one week?
+                        </label>
+                        <select id="00NQm000001TsKb" name="00NQm000001TsKb" required class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">                        
+                            <option value="FALSE">No</option>
+                            <option value="TRUE">Yes</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <button type="submit" name="submit"
+                        class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    Submit Support Request
+                </button>
+            </div>
+        </form>
+    </div>
+    <script>
+        const currentURL = window.location.href;
+        const newURL = currentURL.includes('?') ? `${currentURL}&message=success` : `${currentURL}?message=success`;
+        document.getElementById('retURL').value = newURL;
+
+        // Check for URL parameter and show toast if it matches
+        const urlParams = new URLSearchParams(window.location.search);
+        const messageParam = urlParams.get('message');
+        
+        if(messageParam)
+        {
+            const toastMessage = messageParam === 'success' ? 'Case created, you will receive a confirmation email!' : 'An error occurred!';
+            const toastType = messageParam === 'success' ? 'success' : 'error';  
+            showToast(toastMessage, toastType);
+        }
+
+        function showToast(message, type = 'success')
+        {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+        
+            // Set message and background color based on type
+            toastMessage.textContent = message;
+            toast.className = `fixed top-10 left-1/2 transform -translate-x-1/2 max-w-lg px-6 py-3 rounded-lg shadow-lg transition-opacity opacity-0 ${
+                type === 'success' ? 'bg-green-500  text-white' : 'bg-red-500 text-white'
+            }`;
+        
+            // Show the toast
+            toast.classList.remove('hidden');
+            toast.classList.add('opacity-100');
+        
+            // Hide the toast after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('opacity-100');
+                toast.classList.add('opacity-0');
+                setTimeout(() => toast.classList.add('hidden'), 300); // Wait for the transition to finish
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
